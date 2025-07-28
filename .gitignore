@@ -4,8 +4,8 @@
 ## Get latest from `dotnet new gitignore`
 
 # Custom Project files
-
 src/Api/firebase.json
+src/Api/MarketingDB.*
 
 # dotenv files
 .env

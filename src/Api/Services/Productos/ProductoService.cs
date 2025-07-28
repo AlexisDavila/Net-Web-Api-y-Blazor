@@ -17,15 +17,16 @@ public class ProductoService : IProductoService
     public async Task<IEnumerable<Producto>> GetAllProductos()
     {
       return await _context.Database.SqlQuery<Producto>(@$"
-         SELECT * FROM Productos
+         SELECT * FROM ""Productos""
       ").ToListAsync();
     }
 
    public async Task<Producto> GetProductoById(int id)
    {
+      Console.WriteLine($"Obteniendo producto con ID: {id}");
       var resultado = await _context.Database.SqlQuery<Producto>(@$"
-            SELECT * FROM Productos WHERE Id = {id}
-        ").FirstOrDefaultAsync();
+         SELECT * FROM ""Productos"" WHERE Id = {id}
+      ").FirstOrDefaultAsync();
 
       return resultado is null ? null! : resultado!;
    }
@@ -33,7 +34,7 @@ public class ProductoService : IProductoService
    public async Task<Producto> CreateProducto(Producto producto)
    {
       var resultado = await _context.Database.ExecuteSqlAsync(@$"
-         INSERT INTO Productos (Nombre, Descripcion, Precio)
+         INSERT INTO ""Productos"" (Nombre, Descripcion, Precio)
          VALUES (
             {producto.Nombre},
             {producto.Descripcion},
@@ -54,15 +55,13 @@ public class ProductoService : IProductoService
         return producto;
     }
 
-    public async Task<bool> DeleteProducto(int id)
+    public Task DeleteProducto(int id)
     {
-        var producto = await GetProductoById(id);
-        _context.Productos.Remove(producto);
-        return await SaveChanges();
+      throw new NotImplementedException();
     }
 
-    public async Task<bool> SaveChanges()
+    public Task<bool> SaveChanges()
     {
-        return await _context.SaveChangesAsync() > 0;
+        throw new NotImplementedException();
     }
 }

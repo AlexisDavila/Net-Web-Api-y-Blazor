@@ -3,8 +3,10 @@ using Google.Apis.Auth.OAuth2;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using NetFirebase.Api.Data;
+using FirebaseAdmin.Extensions;
 using NetFirebase.Api.Services.Authentication;
 using NetFirebase.Api.Services.Productos;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,17 +16,22 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var connectionString = builder.Configuration
+    .GetConnectionString("ConnectionString")
+    ?? throw new ArgumentNullException("No tiene cadena de conexión");
 
-FirebaseApp.Create( new AppOptions
-{
+builder.Services.AddDbContext<DatabaseContext>(options =>{
+    options.UseNpgsql(connectionString);
+});
+
+FirebaseApp.Create( new AppOptions {
     Credential = GoogleCredential.FromFile("firebase.json")
     //ProjectId = "authentication-app-d7d79" // Replace with your Firebase project ID
 });
 
 //builder.Services.AddSingleton<IAuthenticationService, AuthenticationService>();
 
-builder.Services.AddHttpClient<IAuthenticationService, AuthenticationService>((sp, httpClient) =>
-{
+builder.Services.AddHttpClient<IAuthenticationService, AuthenticationService>((sp, httpClient) => {
     var configuration = sp.GetRequiredService<IConfiguration>();
     httpClient.BaseAddress = new Uri(configuration["Authentication:TokenUri"]!);
 });
@@ -39,15 +46,15 @@ builder.Services
 
     });
 
-builder.Services.AddDbContext<DatabaseContext>(opt =>
-{
-    opt.LogTo(Console.WriteLine, new [] {
-        DbLoggerCategory.Database.Command.Name
-    }, LogLevel.Information
-    ).EnableSensitiveDataLogging();
+// builder.Services.AddDbContext<DatabaseContext>(opt =>
+// {
+//     opt.LogTo(Console.WriteLine, new [] {
+//         DbLoggerCategory.Database.Command.Name
+//     }, LogLevel.Information
+//     ).EnableSensitiveDataLogging();
 
-    opt.UseSqlite(builder.Configuration.GetConnectionString("SqliteDatabase"));
-});
+//     opt.UseSqlite(builder.Configuration.GetConnectionString("SqliteDatabase"));
+// });
 
 builder.Services.AddScoped<IProductoService, ProductoService>();
 
@@ -66,5 +73,7 @@ app.MapControllers();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.AddDataPrueba();
 
 app.Run();

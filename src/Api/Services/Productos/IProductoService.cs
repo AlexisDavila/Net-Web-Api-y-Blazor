@@ -10,6 +10,6 @@ public interface IProductoService
    Task<Producto> GetProductoById(int id);
    Task<Producto> CreateProducto(Producto producto);
    Task<Producto> UpdateProducto(Producto producto);
-   Task<bool> DeleteProducto(int id);
+   Task DeleteProducto(int id);
    Task<bool> SaveChanges();
 }
