@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "89a19c00-ae48-4ba1-b4ec-37866aa66ae4",
+		"name": "API NET8 - Firebase",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14045480"
+	},
+	"item": [
+		{
+			"name": "RegisterUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"email\":\"pruebatotal112@gmail.com\",\n   \"password\":\"Americ@2022_1\" \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ url_base}}usuario/register",
+					"host": [
+						"{{ url_base}}usuario"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"email\": \"alexisdavila112@gmail.com\",\n   \"password\": \"Americ@2022_1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ url_base}}usuario/login",
+					"host": [
+						"{{ url_base}}usuario"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "weatherForecast",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjZkZTQwZjA0ODgxYzZhMDE2MTFlYjI4NGE0Yzk1YTI1MWU5MTEyNTAiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vYXV0aGVudGljYXRpb24tYXBwLWQ3ZDc5IiwiYXVkIjoiYXV0aGVudGljYXRpb24tYXBwLWQ3ZDc5IiwiYXV0aF90aW1lIjoxNzUzMTU2NTQ2LCJ1c2VyX2lkIjoiVmQ4STBMTHhzNk1XZnRHeENiYkxpT1JhbnZqMSIsInN1YiI6IlZkOEkwTEx4czZNV2Z0R3hDYmJMaU9SYW52ajEiLCJpYXQiOjE3NTMxNTY1NDYsImV4cCI6MTc1MzE2MDE0NiwiZW1haWwiOiJhbGV4aXNkYXZpbGExMTJAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImFsZXhpc2RhdmlsYTExMkBnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.G6XoMrKEmiWisI8n0qps0guJnH7y-ROW7iQ5gSLdSifnqhUF2FvBw64iHlLOo8HNjW7SFjgTlXwS6hdb_aNdm-YMLGdxNgXJNvvwu-j1dPLHBPKhSb5Cg50drDDQQgqcMW-oDDJq6aCepNtWK8XvOqCb95NtlFHFOMid5nrh5hf7AOP2H-3NveixKxL6BZitaEpnd1s3crqvzJVstAEz0HHrhaZTJXcLI1t3Ckrg6-M6eaNYTDQdcQ3DAuEbl8GaGwn9XWcObobNXepJWN9LB36WvNqN6_NW3xSrSrasuXB7DnGORbCjaH6eie92Mbj4xw2de373EanvfzsunZ9wjw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/WeatherForecast",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"WeatherForecast"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListarProductos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/producto",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"producto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BuscarProductoByID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/producto/1003",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"producto",
+						"1003"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BuscarProductoByNombre",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/producto/nombre/Pro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"producto",
+						"nombre",
+						"Pro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CrearProducto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"nombre\": \"Iphone 14 Pro Max\",\n   \"descripcion\": \"Telefono inteligente de Apple\",\n   \"precio\": 4200\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/producto",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"producto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CrearProducto Copy",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"Id\": 1005,\n   \"nombre\": \"Iphone 15 Pro Max\",\n   \"descripcion\": \"Telefono inteligente de Apple\",\n   \"precio\": 6100\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/producto",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"producto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CrearProducto Copy 2",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/producto/1004",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"producto",
+						"1004"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": " url_base",
+			"value": "http://localhost:5000/api/",
+			"type": "string"
+		}
+	]
+}
